@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden relative">
@@ -29,19 +31,19 @@ export default function Home() {
 
         <div className="flex flex-wrap justify-center gap-6 mt-14">
 
-          <a
+          <Link
             href="/report-lost"
             className="bg-yellow-400 hover:bg-yellow-300 text-black px-10 py-5 rounded-2xl font-black text-lg"
           >
             แจ้งของหาย
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/report-found"
             className="bg-green-500 hover:bg-green-400 px-10 py-5 rounded-2xl font-black text-lg"
           >
             แจ้งของที่เก็บได้
-          </a>
+          </Link>
 
         </div>
 
