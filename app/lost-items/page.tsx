@@ -8,6 +8,8 @@ import {
   getDocs,
   orderBy,
   query,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 
 export default function LostItemsPage() {
@@ -16,33 +18,64 @@ export default function LostItemsPage() {
 
   useEffect(() => {
 
-    const fetchItems = async () => {
-
-      const q = query(
-        collection(db, "lost-items"),
-        orderBy("createdAt", "desc")
-      );
-
-      const querySnapshot = await getDocs(q);
-
-      const data: any[] = [];
-
-      querySnapshot.forEach((doc) => {
-
-        data.push({
-          id: doc.id,
-          ...doc.data(),
-        });
-
-      });
-
-      setItems(data);
-
-    };
-
     fetchItems();
 
   }, []);
+
+  const fetchItems = async () => {
+
+    const q = query(
+      collection(db, "lost-items"),
+      orderBy("createdAt", "desc")
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    const data: any[] = [];
+
+    querySnapshot.forEach((docSnap) => {
+
+      data.push({
+        id: docSnap.id,
+        ...docSnap.data(),
+      });
+
+    });
+
+    setItems(data);
+
+  };
+
+  const markAsReturned = async (item: any) => {
+
+    const studentId = prompt("กรอกรหัสนักเรียน 5 หลัก");
+
+    if (!studentId) return;
+
+    if (studentId !== item.studentId) {
+      alert("รหัสนักเรียนไม่ถูกต้อง");
+      return;
+    }
+
+    try {
+
+      const docRef = doc(db, "lost-items", item.id);
+
+      await updateDoc(docRef, {
+        returned: true,
+      });
+
+      alert("เปลี่ยนสถานะสำเร็จ 🎉");
+
+      fetchItems();
+
+    } catch (error) {
+
+      console.error(error);
+      alert("เกิดข้อผิดพลาด");
+
+    }
+  };
 
   return (
     <main className="min-h-screen bg-black text-white p-10">
@@ -57,7 +90,11 @@ export default function LostItemsPage() {
 
           <div
             key={item.id}
-            className="bg-zinc-900 p-6 rounded-3xl"
+            className={`p-6 rounded-3xl border transition ${
+              item.returned
+                ? "bg-zinc-800 border-green-500 opacity-70"
+                : "bg-zinc-900 border-zinc-800"
+            }`}
           >
 
             {item.imageUrl && (
@@ -67,9 +104,19 @@ export default function LostItemsPage() {
               />
             )}
 
-            <h2 className="text-3xl font-black text-yellow-400">
-              {item.title}
-            </h2>
+            <div className="flex items-center justify-between">
+
+              <h2 className="text-3xl font-black text-yellow-400">
+                {item.title}
+              </h2>
+
+              {item.returned && (
+                <div className="bg-green-500 text-black px-4 py-2 rounded-full font-bold text-sm">
+                  คืนแล้ว
+                </div>
+              )}
+
+            </div>
 
             <p className="mt-4 text-gray-300">
               {item.description}
@@ -86,6 +133,15 @@ export default function LostItemsPage() {
               <div>📅 {item.date}</div>
 
             </div>
+
+            {!item.returned && (
+              <button
+                onClick={() => markAsReturned(item)}
+                className="mt-8 w-full bg-green-500 hover:bg-green-400 text-black py-4 rounded-2xl font-black transition"
+              >
+                รับคืนแล้ว
+              </button>
+            )}
 
           </div>
 

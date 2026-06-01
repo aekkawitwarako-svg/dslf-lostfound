@@ -12,6 +12,7 @@ export default function ReportLostPage() {
   const [date, setDate] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [studentId, setStudentId] = useState("");
 
   const [image, setImage] = useState<File | null>(null);
 
@@ -48,7 +49,9 @@ export default function ReportLostPage() {
         date,
         name,
         phone,
+        studentId,
         imageUrl,
+        returned: false,
         createdAt: new Date(),
       });
 
@@ -60,6 +63,7 @@ export default function ReportLostPage() {
       setDate("");
       setName("");
       setPhone("");
+      setStudentId("");
       setImage(null);
 
     } catch (error) {
@@ -124,6 +128,14 @@ export default function ReportLostPage() {
             placeholder="เบอร์ติดต่อ"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            className="w-full p-4 rounded-xl bg-zinc-900"
+          />
+
+          <input
+            type="text"
+            placeholder="รหัสนักเรียน 5 หลัก"
+            value={studentId}
+            onChange={(e) => setStudentId(e.target.value)}
             className="w-full p-4 rounded-xl bg-zinc-900"
           />
 
