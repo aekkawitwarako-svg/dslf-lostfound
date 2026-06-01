@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -47,37 +48,58 @@ export default function BottomNav() {
     <div
       className="
         fixed
-        bottom-5
+        bottom-6
         left-1/2
         -translate-x-1/2
+
         z-50
 
-        w-[94%]
-        max-w-md
+        w-[92%]
+        max-w-sm
       "
     >
 
       <div
         className="
+          relative
+
           flex
           items-center
           justify-around
 
-          rounded-[34px]
+          rounded-full
 
           border
           border-white/10
 
-          bg-white/5
-
-          backdrop-blur-3xl
+          bg-white/[0.04]
 
           px-3
           py-3
 
-          shadow-[0_8px_40px_rgba(255,255,255,0.08)]
+          backdrop-blur-[40px]
+
+          shadow-[0_0_50px_rgba(34,197,94,0.10)]
         "
       >
+
+        {/* GLASS HIGHLIGHT */}
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            inset-0
+
+            rounded-full
+
+            bg-gradient-to-b
+            from-white/10
+            to-transparent
+
+            opacity-60
+          "
+        />
 
         {navItems.map((item) => {
 
@@ -90,63 +112,66 @@ export default function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`
+              className="
+                relative
+
                 flex
                 flex-col
                 items-center
                 justify-center
-
-                rounded-[26px]
-
-                px-5
-                py-3
-
-                transition-all
-                duration-300
-
-                ${
-                  active
-                    ? `
-                      bg-white/10
-
-                      border
-                      border-white/15
-
-                      scale-105
-
-                      shadow-[0_0_30px_rgba(255,255,255,0.14)]
-                    `
-                    : `
-                      hover:bg-white/5
-                    `
-                }
-              `}
+              "
             >
 
+              {/* ACTIVE GLASS */}
+              {active && (
+
+                <div
+                  className="
+                    absolute
+
+                    -inset-2
+
+                    rounded-3xl
+
+                    border
+                    border-emerald-400/15
+
+                    bg-emerald-400/10
+
+                    backdrop-blur-2xl
+
+                    shadow-[0_0_40px_rgba(34,197,94,0.18)]
+                  "
+                />
+
+              )}
+
+              {/* ICON */}
               <div
                 className={`
+                  relative
+                  z-10
+
                   flex
                   items-center
                   justify-center
 
-                  w-12
-                  h-12
+                  w-14
+                  h-14
 
-                  rounded-2xl
+                  rounded-full
 
-                  border
-
-                  backdrop-blur-xl
+                  transition-all
+                  duration-500
 
                   ${
                     active
                       ? `
                         bg-white/10
-                        border-white/15
+                        backdrop-blur-xl
                       `
                       : `
-                        bg-white/5
-                        border-white/10
+                        bg-transparent
                       `
                   }
                 `}
@@ -157,16 +182,17 @@ export default function BottomNav() {
                   strokeWidth={2.2}
                   className={`
                     transition-all
+                    duration-500
 
                     ${
                       active
                         ? `
                           text-white
 
-                          drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]
+                          drop-shadow-[0_0_14px_rgba(255,255,255,0.7)]
                         `
                         : `
-                          text-white/60
+                          text-white/45
                         `
                     }
                   `}
@@ -174,16 +200,28 @@ export default function BottomNav() {
 
               </div>
 
+              {/* LABEL */}
               <span
                 className={`
-                  mt-2
+                  relative
+                  z-10
+
+                  mt-1
+
                   text-[11px]
                   font-medium
 
+                  transition-all
+                  duration-500
+
                   ${
                     active
-                      ? "text-white"
-                      : "text-white/50"
+                      ? `
+                        text-white
+                      `
+                      : `
+                        text-white/35
+                      `
                   }
                 `}
               >
