@@ -15,22 +15,22 @@ export default function Home() {
       </div>
 
       {/* NAVBAR */}
-      <nav className="relative z-20 flex items-center justify-between px-10 py-6 border-b border-white/10">
+      <nav className="relative z-20 flex items-center justify-between px-4 md:px-10 py-5 border-b border-white/10">
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
 
           <img
             src="/assets/ตราเทพศิรินทร์.png"
             alt="Debsirin"
-            className="w-16 h-16 object-contain"
+            className="w-12 h-12 md:w-16 md:h-16 object-contain"
           />
 
           <div>
-            <h1 className="text-2xl font-black">
+            <h1 className="text-lg md:text-2xl font-black">
               โรงเรียนเทพศิรินทร์
             </h1>
 
-            <p className="text-yellow-400">
+            <p className="text-yellow-400 text-sm md:text-base">
               Debsirin School
             </p>
           </div>
@@ -40,54 +40,54 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="relative z-20 flex flex-col items-center justify-center text-center px-6 pt-24">
+      <section className="relative z-20 flex flex-col items-center justify-center text-center px-5 pt-16 md:pt-24">
 
         <img
           src="/assets/DS Lost and Found logo.png"
           alt="DSLF"
-          className="w-72 drop-shadow-[0_0_40px_rgba(255,255,255,0.35)]"
+          className="w-44 md:w-72 drop-shadow-[0_0_40px_rgba(255,255,255,0.35)]"
         />
 
-        <h1 className="text-7xl font-black mt-10 tracking-wide">
+        <h1 className="text-5xl md:text-7xl font-black mt-8 tracking-wide">
           DSLF
         </h1>
 
-        <p className="text-yellow-400 text-4xl font-bold mt-4">
+        <p className="text-yellow-400 text-2xl md:text-4xl font-bold mt-3">
           Debsirin Lost & Found
         </p>
 
-        <p className="text-gray-300 text-lg mt-8 max-w-2xl leading-relaxed">
+        <p className="text-gray-300 text-sm md:text-lg mt-6 max-w-2xl leading-relaxed">
           ระบบแจ้งของหายและของที่เก็บได้
           สำหรับนักเรียนโรงเรียนเทพศิรินทร์
         </p>
 
         {/* BUTTONS */}
-        <div className="flex flex-wrap justify-center gap-6 mt-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 w-full max-w-xl">
 
           <Link
             href="/report-lost"
-            className="bg-yellow-400 hover:bg-yellow-300 text-black px-10 py-5 rounded-2xl font-black text-lg transition hover:scale-105 shadow-lg shadow-yellow-500/20"
+            className="bg-yellow-400 hover:bg-yellow-300 text-black px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105 shadow-lg shadow-yellow-500/20"
           >
             แจ้งของหาย
           </Link>
 
           <Link
             href="/report-found"
-            className="bg-green-500 hover:bg-green-400 px-10 py-5 rounded-2xl font-black text-lg transition hover:scale-105 shadow-lg shadow-green-500/20"
+            className="bg-green-500 hover:bg-green-400 px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105 shadow-lg shadow-green-500/20"
           >
             แจ้งของที่เก็บได้
           </Link>
 
           <Link
             href="/lost-items"
-            className="bg-zinc-800 hover:bg-zinc-700 border border-yellow-400 px-10 py-5 rounded-2xl font-black text-lg transition hover:scale-105"
+            className="bg-zinc-800 hover:bg-zinc-700 border border-yellow-400 px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105"
           >
             ดูรายการของหาย
           </Link>
 
           <Link
             href="/found-items"
-            className="bg-zinc-800 hover:bg-zinc-700 border border-green-400 px-10 py-5 rounded-2xl font-black text-lg transition hover:scale-105"
+            className="bg-zinc-800 hover:bg-zinc-700 border border-green-400 px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105"
           >
             ดูรายการของที่เก็บได้
           </Link>
@@ -95,7 +95,7 @@ export default function Home() {
         </div>
 
         {/* INFO */}
-        <div className="mt-20 text-gray-400 text-sm space-y-2">
+        <div className="mt-16 text-gray-400 text-xs md:text-sm space-y-2 px-4">
 
           <p>
             โรงเรียนเทพศิรินทร์
@@ -116,7 +116,7 @@ export default function Home() {
         </div>
 
         {/* FOOTER */}
-        <div className="mt-16 mb-10 text-gray-500 text-sm">
+        <div className="mt-10 mb-8 text-gray-500 text-xs md:text-sm text-center">
           Developed by กลุ่มบริหารกิจการนักเรียนและงานบุคคล
         </div>
 
