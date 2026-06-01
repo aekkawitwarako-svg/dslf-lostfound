@@ -1,25 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 
-export default function AdminPage() {
+import {
+  TriangleAlert,
+  PackageCheck,
+  Search,
+  Boxes,
+} from "lucide-react";
 
-  const [password, setPassword] = useState("");
+export default function HomePage() {
 
   return (
 
-    <main className="
-      min-h-screen
-
-      bg-black
-      text-white
-
-      flex
-      items-center
-      justify-center
-
-      px-6
-    ">
+    <main className="min-h-screen bg-black text-white overflow-hidden">
 
       {/* BACKGROUND */}
       <div
@@ -28,59 +22,123 @@ export default function AdminPage() {
           inset-0
           -z-10
 
-          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_30%),linear-gradient(to_bottom,#030303,#090909)]
+          bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.15),transparent_30%),linear-gradient(to_bottom,#020202,#050505)]
         "
       />
 
-      <div
-        className="
-          w-full
-          max-w-md
+      <div className="max-w-5xl mx-auto px-6 py-10">
 
-          rounded-[40px]
-
-          border
-          border-white/10
-
-          bg-white/5
-
-          backdrop-blur-3xl
-
-          p-8
-
-          shadow-[0_8px_60px_rgba(255,255,255,0.08)]
-        "
-      >
-
-        {/* TITLE */}
-        <div className="text-center">
+        {/* SCHOOL BRAND */}
+        <div className="flex items-center gap-5">
 
           <div
             className="
-              inline-flex
+              w-24
+              h-24
 
-              px-4
-              py-2
-
-              rounded-full
+              rounded-[28px]
 
               bg-white/10
 
               border
               border-white/10
 
-              text-sm
-              text-white/70
+              backdrop-blur-3xl
+
+              shadow-[0_8px_40px_rgba(255,255,255,0.08)]
+
+              flex
+              items-center
+              justify-center
             "
           >
-            Admin Access
+
+            <Image
+              src="/ตราเทพศิรินทร์.png"
+              alt="Debsirin School"
+              width={70}
+              height={70}
+              className="object-contain"
+            />
+
+          </div>
+
+          <div>
+
+            <h1
+              className="
+                text-3xl
+                md:text-4xl
+
+                font-black
+
+                bg-gradient-to-b
+                from-white
+                to-white/70
+
+                bg-clip-text
+                text-transparent
+              "
+            >
+              โรงเรียนเทพศิรินทร์
+            </h1>
+
+            <p className="text-yellow-300 text-lg mt-1">
+              Debsirin School
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* HERO */}
+        <div className="text-center mt-16">
+
+          <div className="flex justify-center">
+
+            <div
+              className="
+                relative
+
+                w-40
+                h-40
+
+                rounded-[42px]
+
+                bg-white/5
+
+                border
+                border-white/10
+
+                backdrop-blur-3xl
+
+                shadow-[0_0_80px_rgba(34,197,94,0.15)]
+
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <Image
+                src="/assets/DS Lost and Found logo.png"
+                alt="DSLF Logo"
+                width={110}
+                height={110}
+                className="object-contain"
+              />
+
+            </div>
+
           </div>
 
           <h1
             className="
-              mt-6
+              mt-10
 
-              text-4xl
+              text-6xl
+              md:text-8xl
+
               font-black
 
               bg-gradient-to-b
@@ -91,55 +149,58 @@ export default function AdminPage() {
               text-transparent
             "
           >
-            DSLF Admin
+            DSLF
           </h1>
 
-          <p className="mt-3 text-white/40">
-            Secure management portal
+          <p
+            className="
+              mt-5
+
+              text-white/50
+
+              text-lg
+              md:text-xl
+            "
+          >
+            Debsirin School Lost & Found
           </p>
 
         </div>
 
-        {/* INPUT */}
-        <div className="mt-10">
-
-          <label className="text-sm text-white/50">
-            Admin Password
-          </label>
+        {/* SEARCH */}
+        <div className="mt-14">
 
           <div
             className="
-              mt-3
+              flex
+              items-center
 
-              rounded-[24px]
+              rounded-[30px]
 
               border
               border-white/10
 
               bg-white/5
 
-              backdrop-blur-2xl
+              backdrop-blur-3xl
 
-              px-5
-              py-4
+              px-6
+              py-5
 
-              shadow-[0_0_30px_rgba(255,255,255,0.05)]
-
-              transition-all
-              duration-300
-
-              focus-within:border-white/20
-              focus-within:bg-white/10
-              focus-within:shadow-[0_0_40px_rgba(255,255,255,0.08)]
+              shadow-[0_0_40px_rgba(34,197,94,0.08)]
             "
           >
 
+            <Search
+              size={22}
+              className="text-white/40"
+            />
+
             <input
-              type="password"
-              placeholder="Enter admin password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              placeholder="Search lost or found items..."
               className="
+                ml-4
                 w-full
 
                 bg-transparent
@@ -148,7 +209,7 @@ export default function AdminPage() {
 
                 text-white
 
-                placeholder:text-white/25
+                placeholder:text-white/30
               "
             />
 
@@ -156,30 +217,341 @@ export default function AdminPage() {
 
         </div>
 
-        {/* BUTTON */}
-        <button
-          className="
-            mt-8
-            w-full
+        {/* GRID */}
+        <div className="grid grid-cols-2 gap-5 mt-14">
 
-            rounded-[24px]
+          {/* REPORT LOST */}
+          <a
+            href="/report-lost"
+            className="
+              group
+              relative
+              overflow-hidden
 
-            bg-white
+              rounded-[34px]
 
-            py-4
+              border
+              border-yellow-400/10
 
-            text-black
-            font-semibold
+              bg-yellow-400/5
 
-            transition-all
-            duration-300
+              backdrop-blur-3xl
 
-            hover:scale-[1.02]
-            hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
-          "
-        >
-          Continue
-        </button>
+              p-6
+
+              transition-all
+              duration-300
+
+              hover:scale-[1.03]
+              hover:bg-yellow-400/10
+
+              shadow-[0_0_40px_rgba(250,204,21,0.08)]
+            "
+          >
+
+            <div
+              className="
+                w-16
+                h-16
+
+                rounded-3xl
+
+                bg-yellow-400/10
+
+                border
+                border-yellow-400/10
+
+                backdrop-blur-xl
+
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <TriangleAlert
+                size={30}
+                className="
+                  text-yellow-300
+
+                  drop-shadow-[0_0_12px_rgba(250,204,21,0.8)]
+                "
+              />
+
+            </div>
+
+            <h2
+              className="
+                mt-6
+                text-xl
+                font-semibold
+              "
+            >
+              แจ้งของหาย
+            </h2>
+
+            <p
+              className="
+                mt-2
+                text-sm
+                text-white/50
+              "
+            >
+              Report lost item
+            </p>
+
+          </a>
+
+          {/* REPORT FOUND */}
+          <a
+            href="/report-found"
+            className="
+              group
+              relative
+              overflow-hidden
+
+              rounded-[34px]
+
+              border
+              border-emerald-400/10
+
+              bg-emerald-400/5
+
+              backdrop-blur-3xl
+
+              p-6
+
+              transition-all
+              duration-300
+
+              hover:scale-[1.03]
+              hover:bg-emerald-400/10
+
+              shadow-[0_0_40px_rgba(34,197,94,0.08)]
+            "
+          >
+
+            <div
+              className="
+                w-16
+                h-16
+
+                rounded-3xl
+
+                bg-emerald-400/10
+
+                border
+                border-emerald-400/10
+
+                backdrop-blur-xl
+
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <PackageCheck
+                size={30}
+                className="
+                  text-emerald-300
+
+                  drop-shadow-[0_0_12px_rgba(34,197,94,0.8)]
+                "
+              />
+
+            </div>
+
+            <h2
+              className="
+                mt-6
+                text-xl
+                font-semibold
+              "
+            >
+              แจ้งของเก็บได้
+            </h2>
+
+            <p
+              className="
+                mt-2
+                text-sm
+                text-white/50
+              "
+            >
+              Report found item
+            </p>
+
+          </a>
+
+          {/* LOST ITEMS */}
+          <a
+            href="/lost-items"
+            className="
+              group
+              relative
+              overflow-hidden
+
+              rounded-[34px]
+
+              border
+              border-white/10
+
+              bg-white/5
+
+              backdrop-blur-3xl
+
+              p-6
+
+              transition-all
+              duration-300
+
+              hover:scale-[1.03]
+              hover:bg-white/10
+
+              shadow-[0_0_40px_rgba(255,255,255,0.06)]
+            "
+          >
+
+            <div
+              className="
+                w-16
+                h-16
+
+                rounded-3xl
+
+                bg-white/10
+
+                border
+                border-white/10
+
+                backdrop-blur-xl
+
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <Search
+                size={30}
+                className="
+                  text-white
+
+                  drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
+                "
+              />
+
+            </div>
+
+            <h2
+              className="
+                mt-6
+                text-xl
+                font-semibold
+              "
+            >
+              ดูรายการของหาย
+            </h2>
+
+            <p
+              className="
+                mt-2
+                text-sm
+                text-white/50
+              "
+            >
+              Lost items feed
+            </p>
+
+          </a>
+
+          {/* FOUND ITEMS */}
+          <a
+            href="/found-items"
+            className="
+              group
+              relative
+              overflow-hidden
+
+              rounded-[34px]
+
+              border
+              border-white/10
+
+              bg-white/5
+
+              backdrop-blur-3xl
+
+              p-6
+
+              transition-all
+              duration-300
+
+              hover:scale-[1.03]
+              hover:bg-white/10
+
+              shadow-[0_0_40px_rgba(255,255,255,0.06)]
+            "
+          >
+
+            <div
+              className="
+                w-16
+                h-16
+
+                rounded-3xl
+
+                bg-white/10
+
+                border
+                border-white/10
+
+                backdrop-blur-xl
+
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <Boxes
+                size={30}
+                className="
+                  text-white
+
+                  drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
+                "
+              />
+
+            </div>
+
+            <h2
+              className="
+                mt-6
+                text-xl
+                font-semibold
+              "
+            >
+              ดูรายการของเก็บได้
+            </h2>
+
+            <p
+              className="
+                mt-2
+                text-sm
+                text-white/50
+              "
+            >
+              Found items feed
+            </p>
+
+          </a>
+
+        </div>
+
+        {/* FOOTER SPACE */}
+        <div className="h-40" />
 
       </div>
 
