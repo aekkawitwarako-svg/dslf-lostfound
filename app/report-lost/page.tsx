@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 
+import toast from "react-hot-toast";
+
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -57,7 +59,7 @@ export default function ReportLostPage() {
         createdAt: new Date(),
       });
 
-      alert("ส่งข้อมูลสำเร็จ 🎉");
+      toast.success("ส่งข้อมูลสำเร็จ ✨");
 
       setTitle("");
       setDescription("");
@@ -71,7 +73,8 @@ export default function ReportLostPage() {
     } catch (error) {
 
       console.error(error);
-      alert("เกิดข้อผิดพลาด");
+
+      toast.error("เกิดข้อผิดพลาด");
 
     }
   };
