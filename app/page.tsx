@@ -22,23 +22,21 @@ export default function HomePage() {
           inset-0
           -z-10
 
-          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_35%),linear-gradient(to_bottom,#050505,#0a0a0a)]
+          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.10),transparent_35%),linear-gradient(to_bottom,#030303,#090909)]
         "
       />
 
       <div className="max-w-5xl mx-auto px-6 py-10">
 
-        {/* LOGO */}
-        <div className="flex justify-center">
+        {/* SCHOOL BRAND */}
+        <div className="flex items-center gap-5">
 
           <div
             className="
-              relative
+              w-24
+              h-24
 
-              w-36
-              h-36
-
-              rounded-[40px]
+              rounded-[28px]
 
               bg-white/10
 
@@ -56,24 +54,91 @@ export default function HomePage() {
           >
 
             <Image
-              src="/assets/DS Lost and Found logo.png"
-              alt="DSLF Logo"
-              width={110}
-              height={110}
+              src="/ตราเทพศิรินทร์.png"
+              alt="Debsirin School"
+              width={70}
+              height={70}
               className="object-contain"
             />
 
           </div>
 
+          <div>
+
+            <h1
+              className="
+                text-3xl
+                md:text-4xl
+
+                font-black
+
+                bg-gradient-to-b
+                from-white
+                to-white/70
+
+                bg-clip-text
+                text-transparent
+              "
+            >
+              โรงเรียนเทพศิรินทร์
+            </h1>
+
+            <p className="text-yellow-300 text-lg mt-1">
+              Debsirin School
+            </p>
+
+          </div>
+
         </div>
 
-        {/* TITLE */}
-        <div className="text-center mt-8">
+        {/* HERO */}
+        <div className="text-center mt-16">
+
+          <div className="flex justify-center">
+
+            <div
+              className="
+                relative
+
+                w-40
+                h-40
+
+                rounded-[42px]
+
+                bg-white/5
+
+                border
+                border-white/10
+
+                backdrop-blur-3xl
+
+                shadow-[0_8px_40px_rgba(255,255,255,0.08)]
+
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <Image
+                src="/assets/DS Lost and Found logo.png"
+                alt="DSLF Logo"
+                width={110}
+                height={110}
+                className="object-contain"
+              />
+
+            </div>
+
+          </div>
 
           <h1
             className="
-              text-5xl
-              md:text-7xl
+              mt-10
+
+              text-6xl
+              md:text-8xl
+
               font-black
 
               bg-gradient-to-b
@@ -89,7 +154,7 @@ export default function HomePage() {
 
           <p
             className="
-              mt-4
+              mt-5
 
               text-white/50
 
@@ -97,20 +162,20 @@ export default function HomePage() {
               md:text-xl
             "
           >
-            Debsirin Lost & Found
+            Debsirin School Lost & Found
           </p>
 
         </div>
 
         {/* SEARCH */}
-        <div className="mt-12">
+        <div className="mt-14">
 
           <div
             className="
               flex
               items-center
 
-              rounded-[28px]
+              rounded-[30px]
 
               border
               border-white/10
@@ -142,6 +207,8 @@ export default function HomePage() {
 
                 outline-none
 
+                text-white
+
                 placeholder:text-white/30
               "
             />
@@ -151,7 +218,7 @@ export default function HomePage() {
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-2 gap-5 mt-12">
+        <div className="grid grid-cols-2 gap-5 mt-14">
 
           {/* REPORT LOST */}
           <a
@@ -161,7 +228,7 @@ export default function HomePage() {
               relative
               overflow-hidden
 
-              rounded-[32px]
+              rounded-[34px]
 
               border
               border-white/10
@@ -243,7 +310,7 @@ export default function HomePage() {
               relative
               overflow-hidden
 
-              rounded-[32px]
+              rounded-[34px]
 
               border
               border-white/10
@@ -325,7 +392,7 @@ export default function HomePage() {
               relative
               overflow-hidden
 
-              rounded-[32px]
+              rounded-[34px]
 
               border
               border-white/10
@@ -384,7 +451,7 @@ export default function HomePage() {
                 font-semibold
               "
             >
-              ของหาย
+              ดูรายการของหาย
             </h2>
 
             <p
@@ -394,7 +461,7 @@ export default function HomePage() {
                 text-white/50
               "
             >
-              Lost items
+              Lost items feed
             </p>
 
           </a>
@@ -407,7 +474,7 @@ export default function HomePage() {
               relative
               overflow-hidden
 
-              rounded-[32px]
+              rounded-[34px]
 
               border
               border-white/10
@@ -466,7 +533,7 @@ export default function HomePage() {
                 font-semibold
               "
             >
-              ของเก็บได้
+              ดูรายการของเก็บได้
             </h2>
 
             <p
@@ -476,12 +543,15 @@ export default function HomePage() {
                 text-white/50
               "
             >
-              Found items
+              Found items feed
             </p>
 
           </a>
 
         </div>
+
+        {/* FOOTER SPACE */}
+        <div className="h-40" />
 
       </div>
 
