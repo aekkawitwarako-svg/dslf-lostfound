@@ -68,7 +68,7 @@ export default function Home() {
             ">
 
               <img
-                src="/assets/ตราเทพศิรินทร์-new.png"
+                src="/assets/ตราเทพศิรินทร์.png"
                 alt="Debsirin"
                 className="w-16 h-16 md:w-24 md:h-24 object-contain"
               />
