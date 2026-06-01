@@ -18,7 +18,9 @@ import {
 
 export default function AdminPage() {
 
-  const [items, setItems] = useState<any[]>([]);
+  const [lostItems, setLostItems] = useState<any[]>([]);
+  const [foundItems, setFoundItems] = useState<any[]>([]);
+
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
@@ -41,29 +43,54 @@ export default function AdminPage() {
 
   const fetchItems = async () => {
 
-    const q = query(
+    /* LOST ITEMS */
+    const lostQuery = query(
       collection(db, "lost-items"),
       orderBy("createdAt", "desc")
     );
 
-    const querySnapshot = await getDocs(q);
+    const lostSnapshot = await getDocs(lostQuery);
 
-    const data: any[] = [];
+    const lostData: any[] = [];
 
-    querySnapshot.forEach((docSnap) => {
+    lostSnapshot.forEach((docSnap) => {
 
-      data.push({
+      lostData.push({
         id: docSnap.id,
         ...docSnap.data(),
       });
 
     });
 
-    setItems(data);
+    setLostItems(lostData);
+
+    /* FOUND ITEMS */
+    const foundQuery = query(
+      collection(db, "found-items"),
+      orderBy("createdAt", "desc")
+    );
+
+    const foundSnapshot = await getDocs(foundQuery);
+
+    const foundData: any[] = [];
+
+    foundSnapshot.forEach((docSnap) => {
+
+      foundData.push({
+        id: docSnap.id,
+        ...docSnap.data(),
+      });
+
+    });
+
+    setFoundItems(foundData);
 
   };
 
-  const deleteItem = async (id: string) => {
+  const deleteItem = async (
+    collectionName: string,
+    id: string
+  ) => {
 
     const confirmDelete = confirm("ลบโพสต์นี้?");
 
@@ -71,7 +98,7 @@ export default function AdminPage() {
 
     try {
 
-      await deleteDoc(doc(db, "lost-items", id));
+      await deleteDoc(doc(db, collectionName, id));
 
       toast.success("ลบโพสต์สำเร็จ");
 
@@ -84,7 +111,6 @@ export default function AdminPage() {
       toast.error("เกิดข้อผิดพลาด");
 
     }
-
   };
 
   if (!authorized) {
@@ -125,119 +151,182 @@ export default function AdminPage() {
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
 
-            <div>
+            <Link
+              href="/"
+              className="
+                inline-flex
+                items-center
+                gap-2
+                bg-white/5
+                backdrop-blur-2xl
+                border border-white/10
+                px-5 py-3
+                rounded-2xl
+                text-red-300
+                hover:bg-white/10
+                transition
+              "
+            >
+              ← กลับหน้าหลัก
+            </Link>
 
-              <Link
-                href="/"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  bg-white/5
-                  backdrop-blur-2xl
-                  border border-white/10
-                  px-5 py-3
-                  rounded-2xl
-                  text-red-300
-                  hover:bg-white/10
-                  transition
-                "
-              >
-                ← กลับหน้าหลัก
-              </Link>
+            <h1 className="text-4xl md:text-6xl font-black text-red-300 mt-8">
+              DSLF ADMIN
+            </h1>
 
-              <h1 className="text-4xl md:text-6xl font-black text-red-300 mt-8">
-                DSLF ADMIN
-              </h1>
+            <p className="text-gray-300 text-sm md:text-lg mt-4">
+              Admin Dashboard
+            </p>
 
-              <p className="text-gray-300 text-sm md:text-lg mt-4">
-                Admin Dashboard
-              </p>
+          </div>
+
+          {/* LOST ITEMS */}
+          <div className="mt-16">
+
+            <h2 className="text-3xl font-black text-yellow-300">
+              ของหาย
+            </h2>
+
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
+
+              {lostItems.map((item) => (
+
+                <div
+                  key={item.id}
+                  className="
+                    relative
+                    overflow-hidden
+                    rounded-[36px]
+                    border border-white/10
+                    bg-white/5
+                    backdrop-blur-3xl
+                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+                  "
+                >
+
+                  <div className="relative z-10 p-6">
+
+                    {item.imageUrl && (
+
+                      <img
+                        src={item.imageUrl}
+                        className="w-full h-64 object-cover rounded-[28px]"
+                      />
+
+                    )}
+
+                    <h2 className="text-3xl font-black text-yellow-300 mt-6">
+                      {item.title}
+                    </h2>
+
+                    <p className="mt-4 text-gray-300">
+                      {item.description}
+                    </p>
+
+                    <button
+                      onClick={() =>
+                        deleteItem("lost-items", item.id)
+                      }
+                      className="
+                        mt-8
+                        w-full
+                        bg-red-400/20
+                        border border-red-300/20
+                        backdrop-blur-2xl
+                        py-4
+                        rounded-[24px]
+                        font-black
+                        text-lg
+                        transition
+                        hover:bg-red-300/30
+                      "
+                    >
+                      🗑 ลบโพสต์
+                    </button>
+
+                  </div>
+
+                </div>
+
+              ))}
 
             </div>
 
           </div>
 
-          {/* GRID */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-14">
+          {/* FOUND ITEMS */}
+          <div className="mt-20">
 
-            {items.map((item) => (
+            <h2 className="text-3xl font-black text-green-300">
+              ของที่เก็บได้
+            </h2>
 
-              <div
-                key={item.id}
-                className="
-                  relative
-                  overflow-hidden
-                  rounded-[36px]
-                  border border-white/10
-                  bg-white/5
-                  backdrop-blur-3xl
-                  shadow-[0_8px_32px_rgba(0,0,0,0.37)]
-                "
-              >
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
 
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none"></div>
+              {foundItems.map((item) => (
 
-                <div className="relative z-10 p-6">
+                <div
+                  key={item.id}
+                  className="
+                    relative
+                    overflow-hidden
+                    rounded-[36px]
+                    border border-white/10
+                    bg-white/5
+                    backdrop-blur-3xl
+                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+                  "
+                >
 
-                  {item.imageUrl && (
+                  <div className="relative z-10 p-6">
 
-                    <div className="overflow-hidden rounded-[28px]">
+                    {item.imageUrl && (
 
                       <img
                         src={item.imageUrl}
-                        className="w-full h-64 object-cover"
+                        className="w-full h-64 object-cover rounded-[28px]"
                       />
 
-                    </div>
+                    )}
 
-                  )}
+                    <h2 className="text-3xl font-black text-green-300 mt-6">
+                      {item.title}
+                    </h2>
 
-                  <h2 className="text-3xl font-black text-yellow-300 mt-6">
-                    {item.title}
-                  </h2>
+                    <p className="mt-4 text-gray-300">
+                      {item.description}
+                    </p>
 
-                  <p className="mt-4 text-gray-300">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-6 space-y-2 text-gray-400">
-
-                    <div>📍 {item.location}</div>
-
-                    <div>👤 {item.name}</div>
-
-                    <div>📞 {item.phone}</div>
+                    <button
+                      onClick={() =>
+                        deleteItem("found-items", item.id)
+                      }
+                      className="
+                        mt-8
+                        w-full
+                        bg-red-400/20
+                        border border-red-300/20
+                        backdrop-blur-2xl
+                        py-4
+                        rounded-[24px]
+                        font-black
+                        text-lg
+                        transition
+                        hover:bg-red-300/30
+                      "
+                    >
+                      🗑 ลบโพสต์
+                    </button>
 
                   </div>
 
-                  {/* DELETE BUTTON */}
-                  <button
-                    onClick={() => deleteItem(item.id)}
-                    className="
-                      mt-8
-                      w-full
-                      bg-red-400/20
-                      border border-red-300/20
-                      backdrop-blur-2xl
-                      py-4
-                      rounded-[24px]
-                      font-black
-                      text-lg
-                      transition
-                      hover:bg-red-300/30
-                    "
-                  >
-                    🗑 ลบโพสต์
-                  </button>
-
                 </div>
 
-              </div>
+              ))}
 
-            ))}
+            </div>
 
           </div>
 
