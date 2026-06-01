@@ -1,339 +1,190 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-
-import toast from "react-hot-toast";
-
-import { db } from "@/lib/firebase";
-
-import {
-  collection,
-  getDocs,
-  deleteDoc,
-  doc,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { useState } from "react";
 
 export default function AdminPage() {
 
-  const [lostItems, setLostItems] = useState<any[]>([]);
-  const [foundItems, setFoundItems] = useState<any[]>([]);
-
-  const [authorized, setAuthorized] = useState(false);
-
-  useEffect(() => {
-
-    const password = prompt("กรอกรหัส Admin");
-
-    if (password === "DSLF112345") {
-
-      setAuthorized(true);
-
-      fetchItems();
-
-    } else {
-
-      toast.error("รหัสไม่ถูกต้อง");
-
-    }
-
-  }, []);
-
-  const fetchItems = async () => {
-
-    /* LOST ITEMS */
-    const lostQuery = query(
-      collection(db, "lost-items"),
-      orderBy("createdAt", "desc")
-    );
-
-    const lostSnapshot = await getDocs(lostQuery);
-
-    const lostData: any[] = [];
-
-    lostSnapshot.forEach((docSnap) => {
-
-      lostData.push({
-        id: docSnap.id,
-        ...docSnap.data(),
-      });
-
-    });
-
-    setLostItems(lostData);
-
-    /* FOUND ITEMS */
-    const foundQuery = query(
-      collection(db, "found-items"),
-      orderBy("createdAt", "desc")
-    );
-
-    const foundSnapshot = await getDocs(foundQuery);
-
-    const foundData: any[] = [];
-
-    foundSnapshot.forEach((docSnap) => {
-
-      foundData.push({
-        id: docSnap.id,
-        ...docSnap.data(),
-      });
-
-    });
-
-    setFoundItems(foundData);
-
-  };
-
-  const deleteItem = async (
-    collectionName: string,
-    id: string
-  ) => {
-
-    const confirmDelete = confirm("ลบโพสต์นี้?");
-
-    if (!confirmDelete) return;
-
-    try {
-
-      await deleteDoc(doc(db, collectionName, id));
-
-      toast.success("ลบโพสต์สำเร็จ");
-
-      fetchItems();
-
-    } catch (error) {
-
-      console.error(error);
-
-      toast.error("เกิดข้อผิดพลาด");
-
-    }
-  };
-
-  if (!authorized) {
-
-    return (
-      <main className="min-h-screen bg-black flex items-center justify-center text-white">
-        <div className="text-2xl font-bold">
-          กำลังตรวจสอบ...
-        </div>
-      </main>
-    );
-
-  }
+  const [password, setPassword] = useState("");
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black text-white relative">
+
+    <main className="
+      min-h-screen
+
+      bg-black
+      text-white
+
+      flex
+      items-center
+      justify-center
+
+      px-6
+    ">
 
       {/* BACKGROUND */}
-      <div className="absolute inset-0">
+      <div
+        className="
+          fixed
+          inset-0
+          -z-10
 
-        <img
-          src="/assets/สนามฟุตบอลปูหญ้าเทียมโรงเรียนเทพศิรินทร์.jpg"
-          className="w-full h-full object-cover opacity-20 scale-110"
-        />
+          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_30%),linear-gradient(to_bottom,#030303,#090909)]
+        "
+      />
 
-        <div className="absolute inset-0 bg-black/60"></div>
+      <div
+        className="
+          w-full
+          max-w-md
 
-        {/* GLOW */}
-        <div className="absolute top-[-120px] left-[-120px] w-[400px] h-[400px] bg-red-400/20 blur-[120px] rounded-full"></div>
+          rounded-[40px]
 
-        <div className="absolute bottom-[-120px] right-[-120px] w-[400px] h-[400px] bg-yellow-400/10 blur-[120px] rounded-full"></div>
+          border
+          border-white/10
+
+          bg-white/5
+
+          backdrop-blur-3xl
+
+          p-8
+
+          shadow-[0_8px_60px_rgba(255,255,255,0.08)]
+        "
+      >
+
+        {/* TITLE */}
+        <div className="text-center">
+
+          <div
+            className="
+              inline-flex
+
+              px-4
+              py-2
+
+              rounded-full
+
+              bg-white/10
+
+              border
+              border-white/10
+
+              text-sm
+              text-white/70
+            "
+          >
+            Admin Access
+          </div>
+
+          <h1
+            className="
+              mt-6
+
+              text-4xl
+              font-black
+
+              bg-gradient-to-b
+              from-white
+              to-white/60
+
+              bg-clip-text
+              text-transparent
+            "
+          >
+            DSLF Admin
+          </h1>
+
+          <p className="mt-3 text-white/40">
+            Secure management portal
+          </p>
+
+        </div>
+
+        {/* INPUT */}
+        <div className="mt-10">
+
+          <label className="text-sm text-white/50">
+            Admin Password
+          </label>
+
+          <div
+            className="
+              mt-3
+
+              rounded-[24px]
+
+              border
+              border-white/10
+
+              bg-white/5
+
+              backdrop-blur-2xl
+
+              px-5
+              py-4
+
+              shadow-[0_0_30px_rgba(255,255,255,0.05)]
+
+              transition-all
+              duration-300
+
+              focus-within:border-white/20
+              focus-within:bg-white/10
+              focus-within:shadow-[0_0_40px_rgba(255,255,255,0.08)]
+            "
+          >
+
+            <input
+              type="password"
+              placeholder="Enter admin password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="
+                w-full
+
+                bg-transparent
+
+                outline-none
+
+                text-white
+
+                placeholder:text-white/25
+              "
+            />
+
+          </div>
+
+        </div>
+
+        {/* BUTTON */}
+        <button
+          className="
+            mt-8
+            w-full
+
+            rounded-[24px]
+
+            bg-white
+
+            py-4
+
+            text-black
+            font-semibold
+
+            transition-all
+            duration-300
+
+            hover:scale-[1.02]
+            hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
+          "
+        >
+          Continue
+        </button>
 
       </div>
 
-      {/* CONTENT */}
-      <section className="relative z-20 px-5 py-10 md:py-16">
-
-        <div className="max-w-7xl mx-auto">
-
-          {/* TOP */}
-          <div>
-
-            <Link
-              href="/"
-              className="
-                inline-flex
-                items-center
-                gap-2
-                bg-white/5
-                backdrop-blur-2xl
-                border border-white/10
-                px-5 py-3
-                rounded-2xl
-                text-red-300
-                hover:bg-white/10
-                transition
-              "
-            >
-              ← กลับหน้าหลัก
-            </Link>
-
-            <h1 className="text-4xl md:text-6xl font-black text-red-300 mt-8">
-              DSLF ADMIN
-            </h1>
-
-            <p className="text-gray-300 text-sm md:text-lg mt-4">
-              Admin Dashboard
-            </p>
-
-          </div>
-
-          {/* LOST ITEMS */}
-          <div className="mt-16">
-
-            <h2 className="text-3xl font-black text-yellow-300">
-              ของหาย
-            </h2>
-
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
-
-              {lostItems.map((item) => (
-
-                <div
-                  key={item.id}
-                  className="
-                    relative
-                    overflow-hidden
-                    rounded-[36px]
-                    border border-white/10
-                    bg-white/5
-                    backdrop-blur-3xl
-                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
-                  "
-                >
-
-                  <div className="relative z-10 p-6">
-
-                    {item.imageUrl && (
-
-                      <img
-                        src={item.imageUrl}
-                        className="w-full h-64 object-cover rounded-[28px]"
-                      />
-
-                    )}
-
-                    <h2 className="text-3xl font-black text-yellow-300 mt-6">
-                      {item.title}
-                    </h2>
-
-                    <p className="mt-4 text-gray-300">
-                      {item.description}
-                    </p>
-
-                    <button
-                      onClick={() =>
-                        deleteItem("lost-items", item.id)
-                      }
-                      className="
-                        mt-8
-                        w-full
-                        bg-red-400/20
-                        border border-red-300/20
-                        backdrop-blur-2xl
-                        py-4
-                        rounded-[24px]
-                        font-black
-                        text-lg
-                        transition
-                        hover:bg-red-300/30
-                      "
-                    >
-                      🗑 ลบโพสต์
-                    </button>
-
-                  </div>
-
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
-          {/* FOUND ITEMS */}
-          <div className="mt-20">
-
-            <h2 className="text-3xl font-black text-green-300">
-              ของที่เก็บได้
-            </h2>
-
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
-
-              {foundItems.map((item) => (
-
-                <div
-                  key={item.id}
-                  className="
-                    relative
-                    overflow-hidden
-                    rounded-[36px]
-                    border border-white/10
-                    bg-white/5
-                    backdrop-blur-3xl
-                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
-                  "
-                >
-
-                  <div className="relative z-10 p-6">
-
-                    {item.imageUrl && (
-
-                      <img
-                        src={item.imageUrl}
-                        className="w-full h-64 object-cover rounded-[28px]"
-                      />
-
-                    )}
-
-                    <h2 className="text-3xl font-black text-green-300 mt-6">
-                      {item.title}
-                    </h2>
-
-                    <p className="mt-4 text-gray-300">
-                      {item.description}
-                    </p>
-
-                    <button
-                      onClick={() =>
-                        deleteItem("found-items", item.id)
-                      }
-                      className="
-                        mt-8
-                        w-full
-                        bg-red-400/20
-                        border border-red-300/20
-                        backdrop-blur-2xl
-                        py-4
-                        rounded-[24px]
-                        font-black
-                        text-lg
-                        transition
-                        hover:bg-red-300/30
-                      "
-                    >
-                      🗑 ลบโพสต์
-                    </button>
-
-                  </div>
-
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
     </main>
+
   );
+
 }
