@@ -2,37 +2,63 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden relative">
+    <main className="min-h-screen overflow-hidden bg-black text-white relative">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
+
         <img
           src="/assets/สนามฟุตบอลปูหญ้าเทียมโรงเรียนเทพศิรินทร์.jpg"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-20 scale-110"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#031b13]/95 via-[#072b1f] to-black"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* GLOW BLOBS */}
+        <div className="absolute top-[-120px] left-[-100px] w-[400px] h-[400px] bg-yellow-400/20 blur-[120px] rounded-full"></div>
+
+        <div className="absolute bottom-[-120px] right-[-100px] w-[400px] h-[400px] bg-green-400/20 blur-[120px] rounded-full"></div>
+
+        <div className="absolute inset-0 backdrop-blur-[2px]"></div>
+
       </div>
 
       {/* NAVBAR */}
-      <nav className="relative z-20 flex items-center justify-between px-4 md:px-10 py-5 border-b border-white/10">
+      <nav className="relative z-20 px-5 md:px-10 py-6">
 
-        <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
 
-          <img
-            src="/assets/ตราเทพศิรินทร์.png"
-            alt="Debsirin"
-            className="w-12 h-12 md:w-16 md:h-16 object-contain"
-          />
+          <div className="flex items-center gap-4">
 
-          <div>
-            <h1 className="text-lg md:text-2xl font-black">
-              โรงเรียนเทพศิรินทร์
-            </h1>
+            <div className="
+              bg-white/10
+              backdrop-blur-2xl
+              border border-white/10
+              rounded-3xl
+              p-3
+              shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+            ">
 
-            <p className="text-yellow-400 text-sm md:text-base">
-              Debsirin School
-            </p>
+              <img
+                src="/assets/ตราเทพศิรินทร์.png"
+                alt="Debsirin"
+                className="w-10 h-10 md:w-14 md:h-14 object-contain"
+              />
+
+            </div>
+
+            <div>
+
+              <h1 className="text-lg md:text-2xl font-black tracking-wide">
+                โรงเรียนเทพศิรินทร์
+              </h1>
+
+              <p className="text-yellow-300 text-sm md:text-base">
+                Debsirin School
+              </p>
+
+            </div>
+
           </div>
 
         </div>
@@ -40,84 +66,233 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="relative z-20 flex flex-col items-center justify-center text-center px-5 pt-16 md:pt-24">
+      <section className="relative z-20 px-5 pt-10 md:pt-20 pb-20">
 
-        <img
-          src="/assets/DS Lost and Found logo.png"
-          alt="DSLF"
-          className="w-44 md:w-72 drop-shadow-[0_0_40px_rgba(255,255,255,0.35)]"
-        />
+        <div className="max-w-6xl mx-auto">
 
-        <h1 className="text-5xl md:text-7xl font-black mt-8 tracking-wide">
-          DSLF
-        </h1>
+          {/* GLASS CONTAINER */}
+          <div className="
+            relative
+            overflow-hidden
+            rounded-[40px]
+            border border-white/10
+            bg-white/5
+            backdrop-blur-3xl
+            shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+            p-8 md:p-16
+          ">
 
-        <p className="text-yellow-400 text-2xl md:text-4xl font-bold mt-3">
-          Debsirin Lost & Found
-        </p>
+            {/* INNER GLOW */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none"></div>
 
-        <p className="text-gray-300 text-sm md:text-lg mt-6 max-w-2xl leading-relaxed">
-          ระบบแจ้งของหายและของที่เก็บได้
-          สำหรับนักเรียนโรงเรียนเทพศิรินทร์
-        </p>
+            <div className="relative z-10 flex flex-col items-center text-center">
 
-        {/* BUTTONS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 w-full max-w-xl">
+              {/* LOGO */}
+              <div className="
+                bg-white/10
+                backdrop-blur-2xl
+                border border-white/10
+                rounded-[40px]
+                p-6
+                shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+              ">
 
-          <Link
-            href="/report-lost"
-            className="bg-yellow-400 hover:bg-yellow-300 text-black px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105 shadow-lg shadow-yellow-500/20"
-          >
-            แจ้งของหาย
-          </Link>
+                <img
+                  src="/assets/DS Lost and Found logo.png"
+                  alt="DSLF"
+                  className="w-40 md:w-64 drop-shadow-[0_0_40px_rgba(255,255,255,0.35)]"
+                />
 
-          <Link
-            href="/report-found"
-            className="bg-green-500 hover:bg-green-400 px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105 shadow-lg shadow-green-500/20"
-          >
-            แจ้งของที่เก็บได้
-          </Link>
+              </div>
 
-          <Link
-            href="/lost-items"
-            className="bg-zinc-800 hover:bg-zinc-700 border border-yellow-400 px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105"
-          >
-            ดูรายการของหาย
-          </Link>
+              {/* TITLE */}
+              <h1 className="text-5xl md:text-8xl font-black mt-10 tracking-[0.2em]">
+                DSLF
+              </h1>
 
-          <Link
-            href="/found-items"
-            className="bg-zinc-800 hover:bg-zinc-700 border border-green-400 px-6 py-4 rounded-2xl font-black text-base md:text-lg transition hover:scale-105"
-          >
-            ดูรายการของที่เก็บได้
-          </Link>
+              <p className="text-yellow-300 text-xl md:text-4xl font-bold mt-4">
+                Debsirin Lost & Found
+              </p>
 
-        </div>
+              <p className="text-gray-300 text-sm md:text-lg mt-8 max-w-3xl leading-relaxed">
+                ระบบแจ้งของหายและของที่เก็บได้
+                สำหรับนักเรียนโรงเรียนเทพศิรินทร์
+              </p>
 
-        {/* INFO */}
-        <div className="mt-16 text-gray-400 text-xs md:text-sm space-y-2 px-4">
+              {/* BUTTON GRID */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14 w-full max-w-3xl">
 
-          <p>
-            โรงเรียนเทพศิรินทร์
-          </p>
+                <Link
+                  href="/report-lost"
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-3xl
+                    border border-yellow-300/20
+                    bg-yellow-400/10
+                    backdrop-blur-2xl
+                    px-8 py-6
+                    transition
+                    hover:scale-[1.03]
+                    hover:bg-yellow-300/20
+                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+                  "
+                >
 
-          <p>
-            1466 ถ.กรุงเกษม แขวงวัดเทพศิรินทร์ เขตป้อมปราบศัตรูพ่าย กรุงเทพมหานคร 10100
-          </p>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
 
-          <p>
-            โทร 02 621 5801
-          </p>
+                  <div className="relative z-10">
 
-          <p>
-            debsirin.ac.th
-          </p>
+                    <div className="text-2xl mb-2">
+                      🔍
+                    </div>
 
-        </div>
+                    <h2 className="text-xl md:text-2xl font-black">
+                      แจ้งของหาย
+                    </h2>
 
-        {/* FOOTER */}
-        <div className="mt-10 mb-8 text-gray-500 text-xs md:text-sm text-center">
-          Developed by กลุ่มบริหารกิจการนักเรียนและงานบุคคล
+                    <p className="text-sm text-gray-300 mt-2">
+                      Lost Item Report
+                    </p>
+
+                  </div>
+
+                </Link>
+
+                <Link
+                  href="/report-found"
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-3xl
+                    border border-green-300/20
+                    bg-green-400/10
+                    backdrop-blur-2xl
+                    px-8 py-6
+                    transition
+                    hover:scale-[1.03]
+                    hover:bg-green-300/20
+                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+                  "
+                >
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+
+                  <div className="relative z-10">
+
+                    <div className="text-2xl mb-2">
+                      📦
+                    </div>
+
+                    <h2 className="text-xl md:text-2xl font-black">
+                      แจ้งของที่เก็บได้
+                    </h2>
+
+                    <p className="text-sm text-gray-300 mt-2">
+                      Found Item Report
+                    </p>
+
+                  </div>
+
+                </Link>
+
+                <Link
+                  href="/lost-items"
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-3xl
+                    border border-white/10
+                    bg-white/5
+                    backdrop-blur-2xl
+                    px-8 py-6
+                    transition
+                    hover:scale-[1.03]
+                    hover:bg-white/10
+                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+                  "
+                >
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+
+                  <div className="relative z-10">
+
+                    <div className="text-2xl mb-2">
+                      📋
+                    </div>
+
+                    <h2 className="text-xl md:text-2xl font-black">
+                      ดูรายการของหาย
+                    </h2>
+
+                    <p className="text-sm text-gray-300 mt-2">
+                      Lost Items Feed
+                    </p>
+
+                  </div>
+
+                </Link>
+
+                <Link
+                  href="/found-items"
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-3xl
+                    border border-white/10
+                    bg-white/5
+                    backdrop-blur-2xl
+                    px-8 py-6
+                    transition
+                    hover:scale-[1.03]
+                    hover:bg-white/10
+                    shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+                  "
+                >
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+
+                  <div className="relative z-10">
+
+                    <div className="text-2xl mb-2">
+                      🧳
+                    </div>
+
+                    <h2 className="text-xl md:text-2xl font-black">
+                      ดูรายการของที่เก็บได้
+                    </h2>
+
+                    <p className="text-sm text-gray-300 mt-2">
+                      Found Items Feed
+                    </p>
+
+                  </div>
+
+                </Link>
+
+              </div>
+
+              {/* FOOTER */}
+              <div className="mt-16 text-gray-400 text-xs md:text-sm leading-relaxed">
+
+                <p>
+                  โรงเรียนเทพศิรินทร์
+                </p>
+
+                <p className="mt-2">
+                  Developed by กลุ่มบริหารกิจการนักเรียนและงานบุคคล
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </section>
