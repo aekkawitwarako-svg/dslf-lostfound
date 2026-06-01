@@ -22,7 +22,7 @@ export default function HomePage() {
           inset-0
           -z-10
 
-          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.10),transparent_35%),linear-gradient(to_bottom,#030303,#090909)]
+          bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.15),transparent_30%),linear-gradient(to_bottom,#020202,#050505)]
         "
       />
 
@@ -112,7 +112,7 @@ export default function HomePage() {
 
                 backdrop-blur-3xl
 
-                shadow-[0_8px_40px_rgba(255,255,255,0.08)]
+                shadow-[0_0_80px_rgba(34,197,94,0.15)]
 
                 flex
                 items-center
@@ -187,7 +187,7 @@ export default function HomePage() {
               px-6
               py-5
 
-              shadow-[0_8px_40px_rgba(255,255,255,0.06)]
+              shadow-[0_0_40px_rgba(34,197,94,0.08)]
             "
           >
 
@@ -231,9 +231,9 @@ export default function HomePage() {
               rounded-[34px]
 
               border
-              border-white/10
+              border-yellow-400/10
 
-              bg-white/5
+              bg-yellow-400/5
 
               backdrop-blur-3xl
 
@@ -243,9 +243,9 @@ export default function HomePage() {
               duration-300
 
               hover:scale-[1.03]
-              hover:bg-white/10
+              hover:bg-yellow-400/10
 
-              shadow-[0_8px_40px_rgba(255,255,255,0.06)]
+              shadow-[0_0_40px_rgba(250,204,21,0.08)]
             "
           >
 
@@ -256,10 +256,10 @@ export default function HomePage() {
 
                 rounded-3xl
 
-                bg-white/10
+                bg-yellow-400/10
 
                 border
-                border-white/10
+                border-yellow-400/10
 
                 backdrop-blur-xl
 
@@ -272,9 +272,9 @@ export default function HomePage() {
               <TriangleAlert
                 size={30}
                 className="
-                  text-white
+                  text-yellow-300
 
-                  drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]
+                  drop-shadow-[0_0_12px_rgba(250,204,21,0.8)]
                 "
               />
 
@@ -313,9 +313,9 @@ export default function HomePage() {
               rounded-[34px]
 
               border
-              border-white/10
+              border-emerald-400/10
 
-              bg-white/5
+              bg-emerald-400/5
 
               backdrop-blur-3xl
 
@@ -325,9 +325,9 @@ export default function HomePage() {
               duration-300
 
               hover:scale-[1.03]
-              hover:bg-white/10
+              hover:bg-emerald-400/10
 
-              shadow-[0_8px_40px_rgba(255,255,255,0.06)]
+              shadow-[0_0_40px_rgba(34,197,94,0.08)]
             "
           >
 
@@ -338,10 +338,10 @@ export default function HomePage() {
 
                 rounded-3xl
 
-                bg-white/10
+                bg-emerald-400/10
 
                 border
-                border-white/10
+                border-emerald-400/10
 
                 backdrop-blur-xl
 
@@ -354,9 +354,9 @@ export default function HomePage() {
               <PackageCheck
                 size={30}
                 className="
-                  text-white
+                  text-emerald-300
 
-                  drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]
+                  drop-shadow-[0_0_12px_rgba(34,197,94,0.8)]
                 "
               />
 
@@ -409,7 +409,7 @@ export default function HomePage() {
               hover:scale-[1.03]
               hover:bg-white/10
 
-              shadow-[0_8px_40px_rgba(255,255,255,0.06)]
+              shadow-[0_0_40px_rgba(255,255,255,0.06)]
             "
           >
 
@@ -438,7 +438,7 @@ export default function HomePage() {
                 className="
                   text-white
 
-                  drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]
+                  drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
                 "
               />
 
@@ -491,7 +491,7 @@ export default function HomePage() {
               hover:scale-[1.03]
               hover:bg-white/10
 
-              shadow-[0_8px_40px_rgba(255,255,255,0.06)]
+              shadow-[0_0_40px_rgba(255,255,255,0.06)]
             "
           >
 
@@ -520,7 +520,7 @@ export default function HomePage() {
                 className="
                   text-white
 
-                  drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]
+                  drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
                 "
               />
 
