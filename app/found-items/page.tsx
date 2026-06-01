@@ -17,6 +17,8 @@ export default function FoundItemsPage() {
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
 
     const fetchItems = async () => {
@@ -56,6 +58,12 @@ export default function FoundItemsPage() {
     fetchItems();
 
   }, []);
+
+  const filteredItems = items.filter((item) =>
+    item.title?.toLowerCase().includes(search.toLowerCase()) ||
+    item.description?.toLowerCase().includes(search.toLowerCase()) ||
+    item.location?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <main className="min-h-screen overflow-hidden bg-black text-white relative">
@@ -147,6 +155,30 @@ export default function FoundItemsPage() {
 
           </div>
 
+          {/* SEARCH */}
+          <div className="relative mt-10 mb-10">
+
+            <input
+              type="text"
+              placeholder="🔍 ค้นหาของที่เก็บได้..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="
+                w-full
+                bg-white/5
+                border border-white/10
+                backdrop-blur-2xl
+                rounded-3xl
+                px-6 py-5
+                text-lg
+                outline-none
+                focus:border-green-300/50
+                transition
+              "
+            />
+
+          </div>
+
           {/* LOADING */}
           {loading ? (
 
@@ -164,7 +196,7 @@ export default function FoundItemsPage() {
             /* GRID */
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-14">
 
-              {items.map((item) => (
+              {filteredItems.map((item) => (
 
                 <div
                   key={item.id}
