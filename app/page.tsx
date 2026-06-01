@@ -31,12 +31,12 @@ export default function Home() {
           <div className="flex items-center gap-4">
 
             <div className="
-              bg-white/10
-              backdrop-blur-2xl
-              border border-white/10
-              rounded-3xl
-              p-3
-              shadow-[0_8px_32px_rgba(0,0,0,0.37)]
+             bg-white/40
+             backdrop-blur-2xl
+             border border-white/20
+             rounded-3xl
+             p-3
+             shadow-[0_8px_32px_rgba(255,255,255,0.15)]
             ">
 
               <img
