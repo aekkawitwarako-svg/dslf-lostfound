@@ -2,524 +2,417 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import {
-  TriangleAlert,
-  PackageCheck,
+  Home,
   Search,
+  PackageCheck,
+  Shield,
+  TriangleAlert,
+  ClipboardList,
   Boxes,
 } from "lucide-react";
 
 export default function HomePage() {
-
   return (
-
-    <main className="min-h-screen overflow-hidden bg-black text-white">
+    <main className="relative min-h-screen overflow-hidden bg-black text-white">
 
       {/* BACKGROUND */}
       <div
         className="
-          fixed inset-0 -z-20
-
-          bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.18),transparent_30%),linear-gradient(to_bottom,#081107,#101c0f,#050505)]
+          fixed inset-0 -z-30
+          bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.22),transparent_32%),linear-gradient(to_bottom,#081107,#0f1d10,#050505)]
         "
       />
 
-      {/* FLOATING GLOW */}
-      <div
-        className="
-          pointer-events-none
+      {/* GREEN / GOLD LIGHT */}
+      <div className="absolute top-[-120px] left-[-120px] h-[340px] w-[340px] rounded-full bg-green-500/20 blur-[120px]" />
 
-          fixed
-          top-[-120px]
-          left-[-120px]
+      <div className="absolute bottom-[-120px] right-[-120px] h-[340px] w-[340px] rounded-full bg-yellow-400/10 blur-[120px]" />
 
-          h-[420px]
-          w-[420px]
+      {/* HEADER */}
+      <section className="px-6 pt-10">
 
-          rounded-full
+        <div className="flex items-center gap-4">
 
-          bg-emerald-400/10
-
-          blur-[120px]
-
-          animate-pulse
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-
-          fixed
-          bottom-[-150px]
-          right-[-150px]
-
-          h-[420px]
-          w-[420px]
-
-          rounded-full
-
-          bg-yellow-300/10
-
-          blur-[120px]
-
-          animate-pulse
-        "
-      />
-
-      <div className="mx-auto max-w-5xl px-6 py-10">
-
-        {/* HEADER */}
-        <div className="flex items-center justify-between">
-
-          <div className="flex items-center gap-5">
-
-            <div
-              className="
-                flex h-24 w-24 items-center justify-center
-
-                rounded-[30px]
-
-                border border-white/10
-
-                bg-white/10
-
-                backdrop-blur-3xl
-
-                shadow-[0_0_40px_rgba(255,255,255,0.08)]
-
-                transition-all
-                duration-700
-
-                hover:scale-105
-              "
-            >
-
-              <Image
-                src="/ตราเทพศิรินทร์.png"
-                alt="Debsirin School"
-                width={70}
-                height={70}
-                className="object-contain"
-              />
-
-            </div>
-
-            <div>
-
-              <h1
-                className="
-                  bg-gradient-to-b
-                  from-white
-                  to-white/70
-
-                  bg-clip-text
-
-                  text-3xl
-                  font-black
-                  text-transparent
-
-                  md:text-4xl
-                "
-              >
-                โรงเรียนเทพศิรินทร์
-              </h1>
-
-              <p className="mt-1 text-lg text-emerald-200/70">
-                Debsirin School
-              </p>
-
-            </div>
-
-          </div>
-
-          <button
-            className="
-              h-16
-              w-16
-
-              rounded-full
-
-              border border-white/10
-
-              bg-white/5
-
-              text-2xl
-              text-white/70
-
-              backdrop-blur-3xl
-
-              shadow-[0_0_30px_rgba(255,255,255,0.06)]
-
-              transition-all
-              duration-500
-
-              hover:scale-105
-              hover:bg-white/10
-            "
-          >
-            ☰
-          </button>
-
-        </div>
-
-        {/* HERO */}
-        <div className="mt-20 text-center">
-
-          <div className="flex justify-center">
-
-            <div
-              className="
-                relative
-
-                flex
-                h-44
-                w-44
-
-                animate-[float_6s_ease-in-out_infinite]
-
-                items-center
-                justify-center
-
-                rounded-[44px]
-
-                border border-white/10
-
-                bg-white/5
-
-                backdrop-blur-3xl
-
-                shadow-[0_0_90px_rgba(34,197,94,0.16)]
-              "
-            >
-
-              {/* REFLECTION */}
-              <div
-                className="
-                  pointer-events-none
-
-                  absolute
-                  inset-0
-
-                  rounded-[44px]
-
-                  bg-gradient-to-br
-                  from-white/20
-                  via-transparent
-                  to-transparent
-                "
-              />
-
-              <Image
-                src="/assets/DS Lost and Found logo.png"
-                alt="DSLF Logo"
-                width={120}
-                height={120}
-                className="object-contain"
-              />
-
-            </div>
-
-          </div>
-
-          {/* DSLF */}
-          <h1
-            className="
-              mt-12
-
-              bg-gradient-to-b
-              from-white/90
-              via-white/40
-              to-white/10
-
-              bg-clip-text
-
-              text-7xl
-              font-black
-
-              tracking-[0.12em]
-
-              text-transparent
-
-              drop-shadow-[0_0_30px_rgba(255,255,255,0.08)]
-
-              md:text-9xl
-            "
-            style={{
-              WebkitTextStroke: "1px rgba(255,255,255,0.18)",
-            }}
-          >
-            DSLF
-          </h1>
-
-          <p className="mt-5 text-lg text-white/45 md:text-xl">
-            Debsirin School Lost & Found
-          </p>
-
-        </div>
-
-        {/* SEARCH */}
-        <div className="mt-14">
-
+          {/* SCHOOL LOGO */}
           <div
             className="
               relative
-
-              flex
-              items-center
-
+              h-[90px]
+              w-[90px]
               overflow-hidden
-
-              rounded-[40px]
-
-              border border-white/10
-
-              bg-white/5
-
-              px-7
-              py-6
-
-              backdrop-blur-3xl
-
-              shadow-[0_0_60px_rgba(34,197,94,0.10)]
-
-              transition-all
-              duration-500
-
-              hover:bg-white/[0.07]
+              rounded-[28px]
+              border border-white/15
+              bg-white/10
+              backdrop-blur-2xl
+              shadow-[0_0_40px_rgba(255,255,255,0.08)]
             "
           >
 
-            {/* REFLECTION */}
-            <div
-              className="
-                pointer-events-none
-
-                absolute
-                inset-0
-
-                bg-gradient-to-r
-                from-transparent
-                via-white/10
-                to-transparent
-
-                opacity-40
-              "
+            <Image
+              src="/assets/ตราเทพศิรินทร์.png"
+              alt="Debsirin"
+              fill
+              className="object-contain p-3"
             />
 
-            <Search
-              size={26}
-              className="relative z-10 text-white/35"
-            />
+          </div>
 
-            <input
-              type="text"
-              placeholder="Search lost or found items..."
-              className="
-                relative
-                z-10
+          {/* SCHOOL NAME */}
+          <div>
 
-                ml-5
-                w-full
+            <h1 className="text-3xl font-bold tracking-wide">
+              โรงเรียนเทพศิรินทร์
+            </h1>
 
-                bg-transparent
-
-                text-lg
-                text-white
-
-                outline-none
-
-                placeholder:text-white/25
-              "
-            />
+            <p className="text-lg text-yellow-300/90">
+              Debsirin School
+            </p>
 
           </div>
 
         </div>
 
-        {/* GRID */}
-        <div className="mt-16 grid grid-cols-2 gap-6">
+      </section>
 
-          {[
-            {
-              href: "/report-lost",
-              title: "แจ้งของหาย",
-              subtitle: "Report lost item",
-              icon: TriangleAlert,
-              color: "yellow",
-            },
+      {/* HERO */}
+      <section className="mt-14 px-6 text-center">
 
-            {
-              href: "/report-found",
-              title: "แจ้งของเก็บได้",
-              subtitle: "Report found item",
-              icon: PackageCheck,
-              color: "emerald",
-            },
+        {/* APP LOGO */}
+        <div
+          className="
+            relative
+            mx-auto
+            h-[130px]
+            w-[130px]
+            overflow-hidden
+            rounded-[36px]
+            border border-white/10
+            bg-white/10
+            backdrop-blur-3xl
+            shadow-[0_0_80px_rgba(255,255,255,0.08)]
+          "
+        >
 
-            {
-              href: "/lost-items",
-              title: "ดูรายการของหาย",
-              subtitle: "Lost items feed",
-              icon: Search,
-              color: "white",
-            },
-
-            {
-              href: "/found-items",
-              title: "ดูรายการของเก็บได้",
-              subtitle: "Found items feed",
-              icon: Boxes,
-              color: "white",
-            },
-
-          ].map((item, index) => {
-
-            const Icon = item.icon;
-
-            return (
-
-              <a
-                key={index}
-                href={item.href}
-                className="
-                  group
-                  relative
-                  overflow-hidden
-
-                  rounded-[38px]
-
-                  border border-white/10
-
-                  bg-white/5
-
-                  p-7
-
-                  backdrop-blur-3xl
-
-                  shadow-[0_0_50px_rgba(255,255,255,0.06)]
-
-                  transition-all
-                  duration-500
-
-                  hover:scale-[1.03]
-                  hover:bg-white/[0.07]
-                "
-              >
-
-                {/* REFLECTION */}
-                <div
-                  className="
-                    pointer-events-none
-
-                    absolute
-                    inset-0
-
-                    bg-gradient-to-br
-                    from-white/10
-                    via-transparent
-                    to-transparent
-
-                    opacity-60
-                  "
-                />
-
-                <div
-                  className="
-                    relative
-                    z-10
-
-                    flex
-                    h-20
-                    w-20
-
-                    items-center
-                    justify-center
-
-                    rounded-full
-
-                    border border-white/10
-
-                    bg-white/10
-
-                    backdrop-blur-xl
-
-                    transition-all
-                    duration-500
-
-                    group-hover:scale-110
-                  "
-                >
-
-                  <Icon
-                    size={36}
-                    className="
-                      text-white
-
-                      drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
-                    "
-                  />
-
-                </div>
-
-                <h2
-                  className="
-                    relative
-                    z-10
-
-                    mt-8
-
-                    text-2xl
-                    font-bold
-                  "
-                >
-                  {item.title}
-                </h2>
-
-                <p
-                  className="
-                    relative
-                    z-10
-
-                    mt-2
-
-                    text-white/45
-                  "
-                >
-                  {item.subtitle}
-                </p>
-
-              </a>
-
-            );
-
-          })}
+          <Image
+            src="/assets/DS Lost and Found logo.png"
+            alt="DSLF"
+            fill
+            className="object-contain p-5"
+          />
 
         </div>
 
-        <div className="h-40" />
+        {/* DSLF */}
+        <h1
+          className="
+            mt-7
+            bg-gradient-to-b
+            from-white/90
+            to-white/20
+            bg-clip-text
+            text-[82px]
+            font-black
+            tracking-[0.35em]
+            text-transparent
+            drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]
+          "
+          style={{
+            WebkitTextStroke: "1px rgba(255,255,255,0.18)",
+          }}
+        >
+          DSLF
+        </h1>
+
+        <p className="-mt-3 text-lg tracking-wide text-white/50">
+          Debsirin Lost & Found
+        </p>
+
+      </section>
+
+      {/* SEARCH */}
+      <section className="mt-10 px-6">
+
+        <div
+          className="
+            flex items-center gap-3
+            rounded-full
+            border border-white/10
+            bg-white/[0.04]
+            px-5 py-4
+            backdrop-blur-2xl
+            shadow-[0_0_30px_rgba(255,255,255,0.04)]
+          "
+        >
+
+          <Search
+            className="text-white/40"
+            size={22}
+          />
+
+          <input
+            type="text"
+            placeholder="Search lost or found items..."
+            className="
+              w-full
+              bg-transparent
+              text-white
+              outline-none
+              placeholder:text-white/30
+            "
+          />
+
+        </div>
+
+      </section>
+
+      {/* MENU */}
+      <section className="mt-10 grid grid-cols-2 gap-5 px-6 pb-36">
+
+        {/* LOST */}
+        <Link href="/report-lost">
+
+          <div
+            className="
+              min-h-[220px]
+              rounded-[34px]
+              border border-white/10
+              bg-white/[0.05]
+              p-6
+              backdrop-blur-3xl
+              transition-all duration-300
+              hover:scale-[1.02]
+              hover:shadow-[0_0_60px_rgba(255,255,255,0.08)]
+            "
+          >
+
+            <div
+              className="
+                flex h-16 w-16 items-center justify-center
+                rounded-2xl
+                border border-white/10
+                bg-white/10
+                shadow-[0_0_30px_rgba(255,255,255,0.08)]
+              "
+            >
+
+              <TriangleAlert size={32} />
+
+            </div>
+
+            <h2 className="mt-7 text-3xl font-bold">
+              แจ้งของหาย
+            </h2>
+
+            <p className="mt-2 text-lg text-white/50">
+              Report lost item
+            </p>
+
+          </div>
+
+        </Link>
+
+        {/* FOUND */}
+        <Link href="/report-found">
+
+          <div
+            className="
+              min-h-[220px]
+              rounded-[34px]
+              border border-white/10
+              bg-white/[0.05]
+              p-6
+              backdrop-blur-3xl
+              transition-all duration-300
+              hover:scale-[1.02]
+              hover:shadow-[0_0_60px_rgba(255,255,255,0.08)]
+            "
+          >
+
+            <div
+              className="
+                flex h-16 w-16 items-center justify-center
+                rounded-2xl
+                border border-white/10
+                bg-white/10
+                shadow-[0_0_30px_rgba(255,255,255,0.08)]
+              "
+            >
+
+              <PackageCheck size={32} />
+
+            </div>
+
+            <h2 className="mt-7 text-3xl font-bold">
+              แจ้งของที่เก็บได้
+            </h2>
+
+            <p className="mt-2 text-lg text-white/50">
+              Report found item
+            </p>
+
+          </div>
+
+        </Link>
+
+        {/* LOST LIST */}
+        <Link href="/lost-items">
+
+          <div
+            className="
+              min-h-[220px]
+              rounded-[34px]
+              border border-white/10
+              bg-white/[0.05]
+              p-6
+              backdrop-blur-3xl
+              transition-all duration-300
+              hover:scale-[1.02]
+              hover:shadow-[0_0_60px_rgba(255,255,255,0.08)]
+            "
+          >
+
+            <div
+              className="
+                flex h-16 w-16 items-center justify-center
+                rounded-2xl
+                border border-white/10
+                bg-white/10
+                shadow-[0_0_30px_rgba(255,255,255,0.08)]
+              "
+            >
+
+              <ClipboardList size={32} />
+
+            </div>
+
+            <h2 className="mt-7 text-3xl font-bold">
+              ดูรายการของหาย
+            </h2>
+
+            <p className="mt-2 text-lg text-white/50">
+              Lost items feed
+            </p>
+
+          </div>
+
+        </Link>
+
+        {/* FOUND LIST */}
+        <Link href="/found-items">
+
+          <div
+            className="
+              min-h-[220px]
+              rounded-[34px]
+              border border-white/10
+              bg-white/[0.05]
+              p-6
+              backdrop-blur-3xl
+              transition-all duration-300
+              hover:scale-[1.02]
+              hover:shadow-[0_0_60px_rgba(255,255,255,0.08)]
+            "
+          >
+
+            <div
+              className="
+                flex h-16 w-16 items-center justify-center
+                rounded-2xl
+                border border-white/10
+                bg-white/10
+                shadow-[0_0_30px_rgba(255,255,255,0.08)]
+              "
+            >
+
+              <Boxes size={32} />
+
+            </div>
+
+            <h2 className="mt-7 text-3xl font-bold">
+              ดูรายการของที่เก็บได้
+            </h2>
+
+            <p className="mt-2 text-lg text-white/50">
+              Found items feed
+            </p>
+
+          </div>
+
+        </Link>
+
+      </section>
+
+      {/* FLOATING NAV */}
+      <div
+        className="
+          fixed bottom-6 left-1/2 z-50
+          flex -translate-x-1/2 items-center gap-7
+          rounded-full
+          border border-white/10
+          bg-white/[0.06]
+          px-8 py-5
+          backdrop-blur-3xl
+          shadow-[0_0_50px_rgba(255,255,255,0.08)]
+        "
+      >
+
+        <Link
+          href="/"
+          className="flex flex-col items-center text-white"
+        >
+
+          <Home size={24} />
+
+          <span className="mt-1 text-xs">
+            Home
+          </span>
+
+        </Link>
+
+        <Link
+          href="/lost-items"
+          className="flex flex-col items-center text-white/60"
+        >
+
+          <Search size={24} />
+
+          <span className="mt-1 text-xs">
+            Lost
+          </span>
+
+        </Link>
+
+        <Link
+          href="/found-items"
+          className="flex flex-col items-center text-white/60"
+        >
+
+          <PackageCheck size={24} />
+
+          <span className="mt-1 text-xs">
+            Found
+          </span>
+
+        </Link>
+
+        <Link
+          href="/admin"
+          className="flex flex-col items-center text-white/60"
+        >
+
+          <Shield size={24} />
+
+          <span className="mt-1 text-xs">
+            Admin
+          </span>
+
+        </Link>
 
       </div>
 
-      {/* FLOAT ANIMATION */}
-      <style jsx global>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-          }
-
-          50% {
-            transform: translateY(-12px);
-          }
-
-          100% {
-            transform: translateY(0px);
-          }
-        }
-      `}</style>
-
     </main>
   );
-
 }
