@@ -1,8 +1,45 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ReportFoundPage() {
+  const router = useRouter();
+
+const [title, setTitle] = useState("");
+const [description, setDescription] = useState("");
+const [location, setLocation] = useState("");
+const [date, setDate] = useState("");
+const [name, setName] = useState("");
+const [phone, setPhone] = useState("");
+
+const handleSubmit = () => {
+  const item = {
+    id: Date.now(),
+    title,
+    description,
+    location,
+    date,
+    name,
+    phone,
+  };
+
+  const existing = JSON.parse(
+    localStorage.getItem("foundItems") || "[]"
+  );
+
+  existing.unshift(item);
+
+  localStorage.setItem(
+    "foundItems",
+    JSON.stringify(existing)
+  );
+
+  alert("บันทึกข้อมูลสำเร็จ");
+
+  router.push("/found-items");
+};
   return (
     <main className="min-h-screen overflow-hidden bg-black text-white relative">
 
