@@ -1,10 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminPage() {
 
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
+
+  const handleLogin = () => {
+
+ 
+
+  if (password === "DSLF112345") {
+
+    router.push("/admin/dashboard");
+
+  } else {
+
+    alert("รหัสผ่านไม่ถูกต้อง");
+
+  }
+
+};
 
   return (
 
@@ -184,6 +203,7 @@ export default function AdminPage() {
 
         {/* BUTTON */}
         <button
+          onClick={handleLogin}
           className="
             mt-8
 
