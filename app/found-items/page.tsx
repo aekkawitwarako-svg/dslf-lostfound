@@ -3,15 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { db } from "@/lib/firebase";
-
-import {
-  collection,
-  getDocs,
-  orderBy,
-  query,
-} from "firebase/firestore";
-
 export default function FoundItemsPage() {
 
   const [items, setItems] = useState<any[]>([]);
@@ -21,41 +12,13 @@ export default function FoundItemsPage() {
 
   useEffect(() => {
 
-    const fetchItems = async () => {
+    const data = JSON.parse(
+      localStorage.getItem("foundItems") || "[]"
+    );
 
-      try {
+    setItems(data);
 
-        const q = query(
-          collection(db, "found-items"),
-          orderBy("createdAt", "desc")
-        );
-
-        const querySnapshot = await getDocs(q);
-
-        const data: any[] = [];
-
-        querySnapshot.forEach((docSnap) => {
-
-          data.push({
-            id: docSnap.id,
-            ...docSnap.data(),
-          });
-
-        });
-
-        setItems(data);
-
-      } catch (error) {
-
-        console.error(error);
-
-      }
-
-      setLoading(false);
-
-    };
-
-    fetchItems();
+    setLoading(false);
 
   }, []);
 

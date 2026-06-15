@@ -15,6 +15,7 @@ const [name, setName] = useState("");
 const [phone, setPhone] = useState("");
 
 const handleSubmit = () => {
+  alert("บันทึกข้อมูลแล้ว กรุณานำส่งที่ห้องกิจการนักเรียน");
   const item = {
     id: Date.now(),
     title,
@@ -120,6 +121,8 @@ const handleSubmit = () => {
                 <input
                   type="text"
                   placeholder="ชื่อสิ่งของ"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   className="
                     w-full
                     bg-white/5
@@ -136,6 +139,8 @@ const handleSubmit = () => {
 
                 <textarea
                   placeholder="รายละเอียดของสิ่งของ"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   className="
                     w-full
                     h-44
@@ -154,6 +159,8 @@ const handleSubmit = () => {
                 <input
                   type="text"
                   placeholder="สถานที่พบ"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                   className="
                     w-full
                     bg-white/5
@@ -170,6 +177,8 @@ const handleSubmit = () => {
 
                 <input
                   type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   className="
                     w-full
                     bg-white/5
@@ -187,6 +196,8 @@ const handleSubmit = () => {
                 <input
                   type="text"
                   placeholder="ชื่อผู้พบ"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="
                     w-full
                     bg-white/5
@@ -204,6 +215,8 @@ const handleSubmit = () => {
                 <input
                   type="text"
                   placeholder="เบอร์ติดต่อ"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="
                     w-full
                     bg-white/5
@@ -245,6 +258,7 @@ const handleSubmit = () => {
 
                 {/* SUBMIT */}
                 <button
+                  onClick={handleSubmit}
                   className="
                     relative
                     overflow-hidden
